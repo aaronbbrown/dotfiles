@@ -45,8 +45,8 @@ fi
 # MySQL
 export MYSQL_PS1="$(hostname) (\h://\d:\p)> "
 
-if [[ -d "$HOME/dotfiles/dotfiles-private/rc.d" ]]; then
-  for RC in "$HOME/dotfiles/dotfiles-private/rc.d/*"; do 
+if [[ -d "$HOME/dotfiles-private/rc.d" ]]; then
+  for RC in "$HOME/dotfiles-private/rc.d/*"; do 
     . $RC
   done
 fi
