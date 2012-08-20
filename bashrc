@@ -1,11 +1,16 @@
 PLATFORM=$(uname -s)
 
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
+}
+
 # all vi, all the time
 set -o vi
 export VISUAL=vi
 export EDITOR=vi
 
 export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/opt/local/icagent/bin/:$PATH
+export PS1="\$(parse_git_branch)\$? [\T] \u@\h:\w\$ "
 
 alias gam="python $HOME/gam/gam.py"
 
@@ -46,7 +51,7 @@ fi
 export MYSQL_PS1="$(hostname) (\h://\d:\p)> "
 
 if [[ -d "$HOME/dotfiles-private/rc.d" ]]; then
-  for RC in "$HOME/dotfiles-private/rc.d/*"; do 
+  for RC in $HOME/dotfiles-private/rc.d/*; do 
     . $RC
   done
 fi
