@@ -1,0 +1,6 @@
+[submodule ".vim"]
+	path = .vim
+	url = git@github.com:9minutesnooze/dot-vim.git
+[submodule "dotfiles-private"]
+	path = dotfiles-private
+	url = gitosis@git.9minutesnooze.com:dotfiles-private.git
