@@ -4,7 +4,7 @@ ARCHIVEDIR="$HOME/archive"
 DOTFILESROOT="$HOME/dotfiles"
 PRIVROOT="$HOME/dotfiles-private"
 
-archiveit {
+archiveit () {
   if [[ -e "$1" ]]; then
     # if it's a symlink, just make it go away
     if [[ -h "$1" ]]; then
@@ -19,8 +19,9 @@ archiveit {
 
 
 pushd $HOME
+git submodule update --init
 echo "Cloning private files..."
-git clone gitosis@git.9minuntesnooze.com:dotfiles-private.git "$PRIVROOT"
+git clone gitosis@git.9minutesnooze.com:dotfiles-private.git "$PRIVROOT"
 echo "Building symlinks"
 
 # dotfiles
@@ -37,6 +38,7 @@ ln -vs "$DOTFILESROOT/.vim/vimrc" "$HOME/.vimrc"
 #private stuff
 archiveit "$HOME/.ssh"
 ln -vs "$PRIVROOT/.ssh" "$HOME/.ssh"
+chmod -Rv 600 "$HOME/.ssh"/*
 
 echo "Done."
 popd
