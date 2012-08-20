@@ -5,21 +5,20 @@ DOTFILESROOT="$HOME/dotfiles"
 PRIVROOT="$HOME/dotfiles-private"
 
 archiveit () {
-  if [[ -e "$1" ]]; then
-    # if it's a symlink, just make it go away
-    if [[ -h "$1" ]]; then
-      rm -v "$1"
-    else
-      [[ -d $ARCHIVEDIR ]] || mkdir -p "$ARCHIVEDIR"
-      echo "Moving $1 to $ARCHIVEDIR ..."
-      mv -v "$1" "$ARCHIVEDIR/" 
-    fi
+  # if it's a symlink, just make it go away
+  if [[ -h "$1" ]]; then
+    echo "Removing symlink for $1 ..."
+    rm -v "$1"
+  elif [[ -e "$1" ]]; then
+    [[ -d $ARCHIVEDIR ]] || mkdir -p "$ARCHIVEDIR"
+    echo "Moving $1 to $ARCHIVEDIR ..."
+    mv -v "$1" "$ARCHIVEDIR/" 
   fi
 }
 
 
 pushd $DOTFILESROOT
-git submodule update --init
+git submodule update --init --recursive
 popd && pushd $HOME
 if [[ -d "$PRIVROOT" ]]; then
   pushd "$PRIVROOT"
@@ -40,7 +39,7 @@ for FILE in gitconfig bash_profile bashrc inputrc vim; do
 done
 
 #vimrc
-archiveit "$HOME/.vim"
+archiveit "$HOME/.vimrc"
 ln -vs "$DOTFILESROOT/.vim/vimrc" "$HOME/.vimrc"
 
 #private stuff
