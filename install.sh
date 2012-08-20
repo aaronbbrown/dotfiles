@@ -24,7 +24,7 @@ git clone gitosis@git.9minuntesnooze.com:dotfiles-private.git "$PRIVROOT"
 echo "Building symlinks"
 
 # dotfiles
-for FILE in bashrc inputrc vim; do 
+for FILE in bash_profile bashrc inputrc vim; do 
   FN="$HOME/.${FILE}" 
   archiveit "$FN"
   ln -vs "$DOTFILESROOT/$FILE" "$FN"
