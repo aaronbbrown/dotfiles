@@ -32,7 +32,7 @@ fi
 echo "Building symlinks"
 
 # dotfiles
-for FILE in gitconfig bash_profile bashrc inputrc vim; do 
+for FILE in gitconfig bash_profile bashrc inputrc ; do 
   FN="$HOME/.${FILE}" 
   archiveit "$FN"
   ln -vs "$DOTFILESROOT/$FILE" "$FN"
@@ -41,6 +41,10 @@ done
 #vimrc
 archiveit "$HOME/.vimrc"
 ln -vs "$DOTFILESROOT/.vim/vimrc" "$HOME/.vimrc"
+
+#.vim
+archiveit "$HOME/.vim"
+ln -vs "$DOTFILESROOT/.vim" "$HOME/.vim"
 
 #private stuff
 archiveit "$HOME/.ssh"
