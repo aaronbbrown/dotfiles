@@ -21,8 +21,15 @@ archiveit () {
 pushd $DOTFILESROOT
 git submodule update --init
 popd && pushd $HOME
-echo "Cloning private files..."
-git clone gitosis@git.9minutesnooze.com:dotfiles-private.git "$PRIVROOT"
+if [[ -d "$PRIVROOT" ]]; then
+  pushd "$PRIVROOT"
+  git pull
+  popd
+else
+  echo "Cloning private files..."
+  git clone gitosis@git.9minutesnooze.com:dotfiles-private.git "$PRIVROOT"
+fi
+
 echo "Building symlinks"
 
 # dotfiles
