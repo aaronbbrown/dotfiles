@@ -33,12 +33,9 @@ if [ -f $BC ]; then
   . $BC
 fi
 
-#EC2 stuff
-export EC2_HOME=~/.ec2
-export PATH=$PATH:$EC2_HOME/bin
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
 
 if [[ $PLATFORM = "Darwin" ]]; then
+  export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
   export CC=/usr/bin/gcc-4.2
   if [[ -d "$HOME/.rvm/bin" ]]; then
     PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
