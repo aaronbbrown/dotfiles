@@ -25,7 +25,6 @@ if [[ $PLATFORM = "Darwin" ]]; then
   fi
 fi 
 
-
 #bash_completion
 case "$PLATFORM" in
   Darwin) BC=$(brew --prefix)/etc/bash_completion 
@@ -38,12 +37,11 @@ if [ -f $BC ]; then
   . $BC
 fi
 
-
 if [[ $PLATFORM = "Darwin" ]]; then
   export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
   export CC=/usr/bin/gcc-4.2
   if [[ -d "$HOME/.rvm/bin" ]]; then
-    PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+     PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
   fi
 fi
 
@@ -55,3 +53,5 @@ if [[ -d "$HOME/dotfiles-private/rc.d" ]]; then
     . $RC
   done
 fi
+
+
