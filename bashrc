@@ -9,7 +9,7 @@ set -o vi
 export VISUAL=vi
 export EDITOR=vi
 
-export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/opt/local/icagent/bin/:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/opt/local/icagent/bin:$PATH
 export PS1="\$(parse_git_branch)\$? [\t] \u@\h:\w\$ "
 
 alias gam="python $HOME/gam/gam.py"
