@@ -1,3 +1,5 @@
 [user]
 	name = Aaron Brown
 	email = aaron@9minutesnooze.com
+[push]
+	default = matching

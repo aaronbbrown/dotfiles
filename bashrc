@@ -9,7 +9,7 @@ set -o vi
 export VISUAL=vi
 export EDITOR=vi
 
-export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:/opt/local/icagent/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/icagent/bin:$PATH
 export PS1="\$(parse_git_branch)\$? [\t] \u@\h:\w\$ "
 
 alias gam="python $HOME/gam/gam.py"
@@ -21,7 +21,7 @@ if [[ $PLATFORM = "Darwin" ]]; then
   fi
 
   if [[ -f "$(which mvim)" ]]; then 
-    alias vim=mvim
+    alias vim="mvim --remote-tab-silent"
   fi
 fi 
 
