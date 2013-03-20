@@ -45,6 +45,12 @@ done
 archiveit "$HOME/.vimrc"
 ln -vs "$DOTFILESROOT/.vim/vimrc" "$HOME/.vimrc"
 
+archiveit "$HOME/.tmux.conf"
+ln -vs "$DOTFILESROOT/tmux.conf" "$HOME/.tmux.conf"
+
+archiveit "$HOME/.gvimrc"
+ln -vs "$DOTFILESROOT/gvimrc" "$HOME/.gvimrc"
+
 #.vim
 archiveit "$HOME/.vim"
 ln -vs "$DOTFILESROOT/.vim" "$HOME/.vim"
