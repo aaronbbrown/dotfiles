@@ -20,8 +20,11 @@ if [[ $PLATFORM = "Darwin" ]]; then
     alias tar="/usr/local/bin/gtar"
   fi
 
-  if [[ -f "$(which mvim)" ]]; then 
-    alias vim="mvim --remote-tab-silent"
+  if [[ -z $SSH_TTY ]]; then
+    # not logged in via ssh
+    if [[ -f "$(which mvim)" ]]; then 
+      alias vim="mvim --remote-tab-silent"
+    fi
   fi
 fi 
 
