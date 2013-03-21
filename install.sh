@@ -45,6 +45,11 @@ done
 archiveit "$HOME/.vimrc"
 ln -vs "$DOTFILESROOT/.vim/vimrc" "$HOME/.vimrc"
 
+#.slate
+archiveit "$HOME/.slate"
+ln -vs "$DOTFILESROOT/slate" "$HOME/.slate"
+
+#tmux config
 archiveit "$HOME/.tmux.conf"
 ln -vs "$DOTFILESROOT/tmux.conf" "$HOME/.tmux.conf"
 
@@ -59,6 +64,12 @@ ln -vs "$DOTFILESROOT/.vim" "$HOME/.vim"
 archiveit "$HOME/.ssh"
 ln -vs "$PRIVROOT/.ssh" "$HOME/.ssh"
 chmod -Rv 600 "$HOME/.ssh"/*
+
+#KeyRemap4MacBook private.xml
+KR4MBDIR="$HOME/Library/Application Support/KeyRemap4MacBook"
+mkdir -p $KR4MBDIR
+archiveit "$KR4MBDIR/private.xml"
+ln -vs "$DOTFILESROOT/private.xml" "$KR4MBDIR/private.xml"
 
 echo "Done."
 popd
