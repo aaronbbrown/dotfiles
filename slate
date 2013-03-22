@@ -25,6 +25,8 @@ config resizePercentOf screenSize
 config windowHintsShowIcons true
 config windowHintsIgnoreHiddenWindows false
 config windowHintsSpread true
+config windowHintsSpreadSearchWidth 200
+config windowHintsSpreadSearchHeight 200
 
 # Show a positioning grid for each monitor
 bind g:${hyper} grid padding:5 0:3,2 1:3,2
@@ -37,6 +39,7 @@ alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
 alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 alias lefttwothirds move screenOriginX;screenOriginY (screenSizeX/3)*2;screenSizeY
 alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
+alias righttwothirds move screenOriginX+screenSizeX/3;screenOriginY screenSizeX;screenSizeY
 alias topleft corner top-left resize:screenSizeX/2;screenSizeY/2
 alias topright corner top-right resize:screenSizeX/2;screenSizeY/2
 alias bottomleft corner bottom-left resize:screenSizeX/2;screenSizeY/2
@@ -52,6 +55,7 @@ bind 4:${hyper} ${lefthalf}
 bind 4:${hyper};shift ${lefttwothirds}
 bind 5:${hyper} ${full}
 bind 6:${hyper} ${righthalf}
+bind 6:${hyper};shift ${righttwothirds}
 bind 7:${hyper} ${topleft}
 bind 8:${hyper} push top bar-resize:screenSizeY/2
 bind 9:${hyper} ${topright}
@@ -86,4 +90,7 @@ bind up:${hyper}    nudge +0   -5%
 bind down:${hyper}  nudge +0   +5%
 
 # Window Hints
-bind esc:cmd hint
+bind tab:${hyper} hint
+
+# Replace built in Mac switcher
+#bind tab:cmd switch
