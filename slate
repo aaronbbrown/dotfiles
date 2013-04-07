@@ -73,9 +73,11 @@ bind i:${hyper} focus ${terminal}
 alias browser 'Google Chrome'
 bind c:${hyper} focus ${browser}
 
-
 alias chat 'Skype'
 bind s:${hyper} focus ${chat}
+
+bind f:${hyper} focus 'Finder'
+bind q:${hyper} focus 'Quassel IRC Client'
  
 # Resize 
 bind right:shift;${hyper}       resize +5% +0
