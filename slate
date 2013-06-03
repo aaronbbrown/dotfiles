@@ -78,6 +78,7 @@ bind s:${hyper} focus ${chat}
 
 bind f:${hyper} focus 'Finder'
 bind q:${hyper} focus 'Quassel IRC Client'
+bind l:${hyper} focus 'LimeChat'
  
 # Resize 
 bind right:shift;${hyper}       resize +5% +0

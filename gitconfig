@@ -1,7 +1,12 @@
 [user]
-	name = Aaron Brown
-	email = aaron@9minutesnooze.com
+  name = Aaron Brown
+  email = aaron@9minutesnooze.com
 [push]
-	default = matching
+  default = matching
 [github]
-	user = 9minutesnooze
+  user = 9minutesnooze
+[color]
+  ui = true
+[alias]
+  up = pull --rebase
+  sub = submodule update --init
