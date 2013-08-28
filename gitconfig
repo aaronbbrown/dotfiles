@@ -10,3 +10,4 @@
 [alias]
   up = pull --rebase
   sub = submodule update --init
+  po = push origin

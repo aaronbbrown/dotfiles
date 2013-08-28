@@ -77,7 +77,7 @@ alias chat 'Skype'
 bind s:${hyper} focus ${chat}
 
 bind f:${hyper} focus 'Finder'
-bind q:${hyper} focus 'Quassel IRC Client'
+bind h:${hyper} focus 'HipChat'
 bind l:${hyper} focus 'LimeChat'
  
 # Resize 

@@ -9,13 +9,20 @@ set -o vi
 export VISUAL=vi
 export EDITOR=vi
 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/opt/local/icagent/bin:$PATH
-export PS1="\$(parse_git_branch)\$? [\t] \u@\h:\w\$ "
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
+export PS1="\$(parse_git_branch)$(echo \$?) [\t] \u@\h:\w\$ "
 
 alias gam="python $HOME/gam/gam.py"
 
 if [[ $PLATFORM = "Darwin" ]]; then
-  alias md5sum=md5
+  if [[ -d "/usr/local/opt/coreutils/libexec/gnubin" ]]; then
+    PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  fi
+
+  if [[ -d "/usr/local/opt/coreutils/libexec/gnuman" ]]; then
+    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+  fi
+
   if [[ -f "/usr/local/bin/gtar" ]]; then
     alias tar="/usr/local/bin/gtar"
   fi
@@ -26,7 +33,7 @@ if [[ $PLATFORM = "Darwin" ]]; then
       alias vim="mvim --remote-tab-silent"
     fi
   fi
-fi 
+fi
 
 #bash_completion
 case "$PLATFORM" in
@@ -42,7 +49,7 @@ fi
 
 if [[ $PLATFORM = "Darwin" ]]; then
   export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
-  export CC=/usr/bin/gcc-4.2
+  export CC="/usr/local/bin/gcc-4.2"
   if [[ -d "$HOME/.rvm/bin" ]]; then
      PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
   fi
@@ -57,4 +64,5 @@ if [[ -d "$HOME/dotfiles-private/rc.d" ]]; then
   done
 fi
 
-
+alias bi="bundle install"
+alias be="bundle exec"

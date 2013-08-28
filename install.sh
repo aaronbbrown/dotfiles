@@ -45,6 +45,9 @@ done
 archiveit "$HOME/.vimrc"
 ln -vs "$DOTFILESROOT/.vim/vimrc" "$HOME/.vimrc"
 
+archiveit "$HOME/.curlrc.amplify"
+ln -vs "$DOTFILESROOT/curlrc.amplify" "$HOME/.curlrc.amplify"
+
 #.slate
 archiveit "$HOME/.slate"
 ln -vs "$DOTFILESROOT/slate" "$HOME/.slate"
