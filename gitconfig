@@ -11,3 +11,5 @@
   up = pull --rebase
   sub = submodule update --init
   po = push origin
+[core]
+	excludesfile = /Users/aaron/.gitignore

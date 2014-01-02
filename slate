@@ -31,7 +31,7 @@ config windowHintsSpreadSearchHeight 200
 # Show a positioning grid for each monitor
 bind g:${hyper} grid padding:5 0:3,2 1:3,2
  
- Reload Slate configuration file
+# Reload Slate configuration file
 bind r:${hyper} relaunch
 
 # Abstract positions

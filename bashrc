@@ -10,7 +10,16 @@ export VISUAL=vi
 export EDITOR=vi
 
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
-export PS1="\$(parse_git_branch)$(echo \$?) [\t] \u@\h:\w\$ "
+export GIT_PS1_SHOWDIRTYSTATE=1     # unstaged (*) and staged (+) changes will be shown
+export GIT_PS1_SHOWSTASHSTATE=1     # If something is stashed then a '$' will be shown
+export GIT_PS1_SHOWUNTRACKEDFILES=1 # If there're untracked files, a '%' will be shown
+export GIT_PS1_SHOWUPSTREAM="auto"  # "<" indicates you are behind, ">" indicates you are ahead,
+                                    # "<>" indicates you have diverged and "=" indicates that there is no difference.
+export GIT_PS1_SHOWCOLORHINTS=1
+
+export ANDROID_HOME=/usr/local/opt/android-sdk
+export PROMPT_COMMAND='__git_ps1 "[\t] \u@\h:\w" "\\\$ "'
+#export PS1="\$(parse_git_branch)$(echo \$?) [\t] \u@\h:\w\$ "
 
 alias gam="python $HOME/gam/gam.py"
 
@@ -47,6 +56,10 @@ if [ -f $BC ]; then
   . $BC
 fi
 
+if [[ -x "$(which aws)" ]]; then
+  complete -C aws_completer aws
+fi
+
 if [[ $PLATFORM = "Darwin" ]]; then
   export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
   export CC="/usr/local/bin/gcc-4.2"
@@ -66,3 +79,6 @@ fi
 
 alias bi="bundle install"
 alias be="bundle exec"
+
+# this is stupid
+alias rvbox='sudo /Library/StartupItems/VirtualBox/VirtualBox restart'
