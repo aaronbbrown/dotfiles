@@ -4,8 +4,29 @@ parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
 }
 
+jcurl () {
+        curl --write-out '\n{"content_type":"%{content_type}","filename_effective":"%{filename_effective}","ftp_entry_path":"%{ftp_entry_path}","http_code":"%{http_code}","http_connect":"%{http_connect}","local_ip":"%{local_ip}","local_port":"%{local_port}","num_connects":"%{num_connects}","num_redirects":"%{num_redirects}","redirect_url":"%{redirect_url}","remote_ip":"%{remote_ip}","remote_port":"%{remote_port}","size_download":"%{size_download}","size_header":"%{size_header}","size_request":"%{size_request}","size_upload":"%{size_upload}","speed_download":"%{speed_download}","speed_upload":"%{speed_upload}","ssl_verify_result":"%{ssl_verify_result}","time_appconnect":"%{time_appconnect}","time_connect":"%{time_connect}","time_namelookup":"%{time_namelookup}","time_pretransfer":"%{time_pretransfer}","time_redirect":"%{time_redirect}","time_starttransfer":"%{time_starttransfer}","time_total":"%{time_total}","url_effective":"%{url_effective}"}' "$@" | tail -n1 | python -mjson.tool
+}
+
+function ksearch(){
+  query="$1"
+  shift
+  k search node "$query" \
+    -a name \
+    -a environment \
+    -a fqdn \
+    -a ipaddress \
+    -a run_list \
+    -a tags \
+    -a ec2.instance_type \
+    -a ec2.placement_availability_zone \
+    "$@"
+}
+
 # all vi, all the time
 set -o vi
+set completion-ignore-case On
+
 export VISUAL=vi
 export EDITOR=vi
 
@@ -21,7 +42,7 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 export PROMPT_COMMAND='__git_ps1 "[\t] \u@\h:\w" "\\\$ "'
 #export PS1="\$(parse_git_branch)$(echo \$?) [\t] \u@\h:\w\$ "
 
-alias gam="python $HOME/gam/gam.py"
+alias utc='TZ=utc date'
 
 if [[ $PLATFORM = "Darwin" ]]; then
   if [[ -d "/usr/local/opt/coreutils/libexec/gnubin" ]]; then
@@ -42,6 +63,8 @@ if [[ $PLATFORM = "Darwin" ]]; then
       alias vim="mvim --remote-tab-silent"
     fi
   fi
+
+  alias flushdns="sudo killall -HUP mDNSResponder"
 fi
 
 #bash_completion
