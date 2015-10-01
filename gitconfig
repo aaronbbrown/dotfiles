@@ -1,6 +1,6 @@
 [user]
   name = Aaron Brown
-  email = aaron@9minutesnooze.com
+  email = abrown@amplify.com
 [push]
   default = matching
 [github]
@@ -10,6 +10,13 @@
 [alias]
   up = pull --rebase
   sub = submodule update --init
-  po = push origin
+  po = push origin --tags
+  lp = log --pretty=oneline --abbrev-commit
+  ss = status -s
 [core]
-	excludesfile = /Users/aaron/.gitignore
+  excludesfile = /Users/aaron/.gitignore
+[diff]
+  tool = vimdiff
+[merge]
+  tool = vimdiff
+
