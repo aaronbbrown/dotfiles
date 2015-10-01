@@ -64,7 +64,18 @@ if [[ $PLATFORM = "Darwin" ]]; then
     fi
   fi
 
-  alias flushdns="sudo killall -HUP mDNSResponder"
+  # Apple can't decide on how to manage DNS
+  OSX_MINOR_VERSION=$(sw_vers -productVersion | awk -F. '{print $2}')
+  OSX_PATCH_VERSION=$(sw_vers -productVersion | awk -F. '{print $3}')
+  if [[ $OSX_MINOR_VERSION -lt 10 ]]; then
+    alias flushdns="sudo killall -HUP mDNSResponder"
+  elif [[ $OSX_MINOR_VERSION -ge 10 ]]; then
+    if [[ $OSX_PATCH_VERSION -ge 4 ]]; then
+      alias flushdns="sudo killall -HUP mDNSResponder"
+    else
+      alias flushdns="sudo discoveryutil udnsflushcaches"
+    fi
+  fi
 fi
 
 #bash_completion
@@ -84,12 +95,14 @@ if [[ -x "$(which aws)" ]]; then
 fi
 
 if [[ $PLATFORM = "Darwin" ]]; then
-  export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
-  export CC="/usr/local/bin/gcc-4.2"
+  export JAVA_HOME="$(/usr/libexec/java_home)"
+  export CC="/usr/bin/gcc"
   if [[ -d "$HOME/.rvm/bin" ]]; then
      PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
   fi
 fi
+
+eval "$(pyenv init -)"
 
 # MySQL
 export MYSQL_PS1="$(hostname) (\h://\d:\p)> "
