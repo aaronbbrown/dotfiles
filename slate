@@ -76,6 +76,8 @@ bind c:${hyper} focus ${browser}
 alias chat 'Skype'
 bind s:${hyper} focus ${chat}
 
+:q
+bind e:${hyper} focus 'Evernote'
 bind f:${hyper} focus 'Finder'
 bind h:${hyper} focus 'HipChat'
 bind l:${hyper} focus 'LimeChat'
