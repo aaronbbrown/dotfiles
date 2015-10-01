@@ -73,14 +73,12 @@ bind i:${hyper} focus ${terminal}
 alias browser 'Google Chrome'
 bind c:${hyper} focus ${browser}
 
-alias chat 'Skype'
-bind s:${hyper} focus ${chat}
-
-:q
+bind s:${hyper} focus 'Skype'
 bind e:${hyper} focus 'Evernote'
 bind f:${hyper} focus 'Finder'
 bind h:${hyper} focus 'HipChat'
-bind l:${hyper} focus 'LimeChat'
+bind l:${hyper} focus 'Slack'
+bind b:${hyper} focus 'Blue Jeans'
  
 # Resize 
 bind right:shift;${hyper}       resize +5% +0
