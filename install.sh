@@ -29,7 +29,7 @@ if [[ -d "$PRIVROOT" ]]; then
   popd
 else
   echo "Cloning private files..."
-  git clone gitosis@git.9minutesnooze.com:dotfiles-private.git "$PRIVROOT"
+  git clone git@gitlab.9minutesnooze.com:aaron/dotfiles-private.git "$PRIVROOT"
 fi
 
 echo "Building symlinks"
@@ -76,3 +76,4 @@ ln -vs "$DOTFILESROOT/private.xml" "$KR4MBDIR/private.xml"
 
 echo "Done."
 popd
+brew install git tig ag bash-completion2

@@ -80,7 +80,7 @@ fi
 
 #bash_completion
 case "$PLATFORM" in
-  Darwin) BC=$(brew --prefix)/etc/bash_completion 
+  Darwin) BC="$(brew --prefix)/share/bash-completion/bash_completion"
           ;;
   Linux)  BC="/etc/bash_completion"
           ;;
@@ -102,7 +102,9 @@ if [[ $PLATFORM = "Darwin" ]]; then
   fi
 fi
 
-eval "$(pyenv init -)"
+if [[ -x "$(which pyenv)" ]]; then
+  eval "$(pyenv init -)"
+fi
 
 # MySQL
 export MYSQL_PS1="$(hostname) (\h://\d:\p)> "
@@ -118,3 +120,4 @@ alias be="bundle exec"
 
 # this is stupid
 alias rvbox='sudo /Library/StartupItems/VirtualBox/VirtualBox restart'
+[[ -x "/opt/boxen/env.sh" ]] && source /opt/boxen/env.sh
