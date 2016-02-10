@@ -10,7 +10,7 @@
 [alias]
   up = pull --rebase
   sub = submodule update --init
-  po = push origin --tags
+  po = push origin
   lp = log --pretty=oneline --abbrev-commit
   ss = status -s
 [core]
