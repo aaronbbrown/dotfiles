@@ -76,7 +76,7 @@ bind c:${hyper} focus ${browser}
 bind s:${hyper} focus 'Skype'
 bind e:${hyper} focus 'Evernote'
 bind f:${hyper} focus 'Finder'
-bind h:${hyper} focus 'HipChat'
+bind h:${hyper} focus 'Hackable Slack Client'
 bind l:${hyper} focus 'Slack'
 bind b:${hyper} focus 'Blue Jeans'
  

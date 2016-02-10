@@ -1,10 +1,10 @@
 [user]
   name = Aaron Brown
-  email = abrown@amplify.com
+  email = aaronbbrown@github.com
 [push]
-  default = matching
+  default = simple
 [github]
-  user = 9minutesnooze
+  user = aaronbbrown
 [color]
   ui = true
 [alias]
@@ -14,9 +14,14 @@
   lp = log --pretty=oneline --abbrev-commit
   ss = status -s
 [core]
-  excludesfile = /Users/aaron/.gitignore
+  excludesfile = /opt/boxen/config/git/gitignore
 [diff]
   tool = vimdiff
 [merge]
   tool = vimdiff
 
+[credential]
+	helper = /opt/boxen/bin/boxen-git-credential
+
+[hub]
+protocol = https

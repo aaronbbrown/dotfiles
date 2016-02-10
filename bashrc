@@ -43,6 +43,7 @@ export PROMPT_COMMAND='__git_ps1 "[\t] \u@\h:\w" "\\\$ "'
 #export PS1="\$(parse_git_branch)$(echo \$?) [\t] \u@\h:\w\$ "
 
 alias utc='TZ=utc date'
+alias ag='ag --pager "less -R"'
 
 if [[ $PLATFORM = "Darwin" ]]; then
   if [[ -d "/usr/local/opt/coreutils/libexec/gnubin" ]]; then
