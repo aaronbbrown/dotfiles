@@ -16,9 +16,11 @@ archiveit () {
   fi
 }
 
-echo installing RVM
-curl -L https://get.rvm.io | bash -s stable
-rvm reload
+# echo installing RVM
+# curl -L https://get.rvm.io | bash -s stable
+# rvm reload
+
+brew bundle
 
 pushd $DOTFILESROOT
 git submodule update --init --recursive
