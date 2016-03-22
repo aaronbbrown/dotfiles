@@ -67,7 +67,7 @@ bind 9:${hyper};shift ${toprightthird}
 alias editor 'MacVim'
 bind v:${hyper} focus ${editor}
 
-alias terminal 'iTerm'
+alias terminal 'iTerm2'
 bind i:${hyper} focus ${terminal}
 
 alias browser 'Google Chrome'

@@ -20,6 +20,7 @@ archiveit () {
 # curl -L https://get.rvm.io | bash -s stable
 # rvm reload
 
+brew tap Homebrew/bundle
 brew bundle
 
 pushd $DOTFILESROOT
@@ -46,6 +47,8 @@ done
 #vimrc
 archiveit "$HOME/.vimrc"
 ln -vs "$DOTFILESROOT/.vim/vimrc" "$HOME/.vimrc"
+mkdir $HOME/.vim/backup
+mkdir $HOME/.vim/swp
 
 archiveit "$HOME/.curlrc.amplify"
 ln -vs "$DOTFILESROOT/curlrc.amplify" "$HOME/.curlrc.amplify"
@@ -78,4 +81,3 @@ ln -vs "$DOTFILESROOT/private.xml" "$KR4MBDIR/private.xml"
 
 echo "Done."
 popd
-brew install git tig ag bash-completion2
