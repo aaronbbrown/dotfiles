@@ -1,10 +1,13 @@
 [user]
   name = Aaron Brown
-  email = aaronbbrown@github.com
+#  email = aaronbbrown@github.com
+	signingkey = B67D4AB8
+	useconfigonly = true
+	email = aaronbbrown@github.com
 [push]
   default = simple
 [github]
-  user = aaronbbrown
+	user = aaronbbrown
 [color]
   ui = true
 [alias]
@@ -13,15 +16,41 @@
   po = push origin
   lp = log --pretty=oneline --abbrev-commit
   ss = status -s
+  mergedry = merge --no-commit --no-ff
 [core]
   excludesfile = /opt/boxen/config/git/gitignore
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[color]
+	ui = always
+[color "diff"]
+	meta = yellow bold
+	commit = green bold
+	frag = magenta bold
+	old = red bold
+	new = blue bold
+	whitespace = blue reverse
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = "red bold 52"
+	newNormal = "blue bold"
+	newHighlight = "blue bold 22"
+
 [diff]
   tool = vimdiff
+  compactionHeuristic = true
 [merge]
   tool = vimdiff
 
 [credential]
-	helper = /opt/boxen/bin/boxen-git-credential
+	helper = osxkeychain
 
 [hub]
 protocol = https
+
+[ghi]
+	token = !security find-internet-password -a aaronbbrown -s github.com -l 'ghi token' -w
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

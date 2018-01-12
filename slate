@@ -8,12 +8,13 @@
  
 # Map hyper to caps lock w/ these instructions:
 # http://www.leancrew.com/all-this/2012/11/shift-control-option-command-on-caps-lock/
-alias hyper ctrl;alt;cmd#
+alias hyper ctrl;alt;cmd;shift#
+#alias hyper ctrl;alt;shift#
 #
 # GLOBAL CONFIGURATIONS
 # -------------------------------------------------------------------
 # See https://github.com/jigish/slate/wiki/Global-Configs
- 
+
 config defaultToCurrentScreen true
 config secondsBeforeRepeat 0.4
 config secondsBetweenRepeat 0.1
@@ -65,28 +66,28 @@ bind 9:${hyper};shift ${toprightthird}
 #APPLICATIONS
 # -------------------------------------------------------------------
 alias editor 'MacVim'
-bind v:${hyper} focus ${editor}
-
-alias terminal 'iTerm2'
-bind i:${hyper} focus ${terminal}
-
 alias browser 'Google Chrome'
-bind c:${hyper} focus ${browser}
+alias terminal 'iTerm2'
 
-bind s:${hyper} focus 'Skype'
+bind a:${hyper} focus 'Atom'
+bind c:${hyper} focus ${browser}
 bind e:${hyper} focus 'Evernote'
 bind f:${hyper} focus 'Finder'
 bind h:${hyper} focus 'Hackable Slack Client'
+bind i:${hyper} focus ${terminal}
 bind l:${hyper} focus 'Slack'
-bind b:${hyper} focus 'Blue Jeans'
- 
-# Resize 
+bind k:${hyper} focus 'Keynote'
+bind m:${hyper} focus 'Messages'
+bind v:${hyper} focus ${editor}
+bind z:${hyper} focus 'zoom.us'
+
+# Resize
 bind right:shift;${hyper}       resize +5% +0
 bind left:shift;${hyper}        resize -5% +0
 bind up:shift;${hyper}          resize +0   -5%
 bind down:shift;${hyper}        resize +0   +5%
- 
-# Nudge 
+
+# Nudge
 bind right:${hyper} nudge +5% +0
 bind left:${hyper}  nudge -5% +0
 bind up:${hyper}    nudge +0   -5%

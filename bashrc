@@ -39,10 +39,11 @@ function ksearch(){
 set -o vi
 set completion-ignore-case On
 
-export VISUAL=vi
-export EDITOR=vi
+export VISUAL=/usr/local/bin/vim
+export EDITOR=/usr/local/bin/vim
+export GOPATH="$HOME/go"
 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
+export PATH=$HOME/bin:$HOME/go/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 export GIT_PS1_SHOWDIRTYSTATE=1     # unstaged (*) and staged (+) changes will be shown
 export GIT_PS1_SHOWSTASHSTATE=1     # If something is stashed then a '$' will be shown
 export GIT_PS1_SHOWUNTRACKEDFILES=1 # If there're untracked files, a '%' will be shown
@@ -52,10 +53,14 @@ export GIT_PS1_SHOWCOLORHINTS=1
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export PROMPT_COMMAND='__git_ps1 "[\t] \u@\h:\w" "\\\$ "'
+export LESS="-R"
 #export PS1="\$(parse_git_branch)$(echo \$?) [\t] \u@\h:\w\$ "
+export PER5LIB=~/lib/perl5
 
 alias utc='TZ=utc date'
-alias ag='ag --pager "less -R"'
+alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
+
 
 if [[ $PLATFORM = "Darwin" ]]; then
   if [[ -d "/usr/local/opt/coreutils/libexec/gnubin" ]]; then
@@ -64,6 +69,15 @@ if [[ $PLATFORM = "Darwin" ]]; then
 
   if [[ -d "/usr/local/opt/coreutils/libexec/gnuman" ]]; then
     MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+  fi
+
+  if [[ -d "/usr/local/opt/findutils/libexec/gnubin" ]]; then
+    PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+  fi
+
+
+  if [[ -d "/usr/local/opt/findutils/libexec/gnuman" ]]; then
+    MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
   fi
 
   if [[ -f "/usr/local/bin/gtar" ]]; then
@@ -119,6 +133,10 @@ if [[ -x "$(which pyenv)" ]]; then
   eval "$(pyenv init -)"
 fi
 
+if [[ -f "$HOME/.gvm/scripts/gvm" ]]; then 
+  source "$HOME/.gvm/scripts/gvm"
+fi
+
 # MySQL
 export MYSQL_PS1="$(hostname) (\h://\d:\p)> "
 
@@ -131,6 +149,8 @@ fi
 alias bi="bundle install"
 alias be="bundle exec"
 
-# this is stupid
-alias rvbox='sudo /Library/StartupItems/VirtualBox/VirtualBox restart'
-[[ -x "/opt/boxen/env.sh" ]] && source /opt/boxen/env.sh
+PATH="/Users/aaronbbrown/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/aaronbbrown/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/aaronbbrown/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/aaronbbrown/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/aaronbbrown/perl5"; export PERL_MM_OPT;
