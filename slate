@@ -1,15 +1,11 @@
-# stolen from 
+# stolen from
 # https://gist.github.com/lmullen/4736568
 # http://thume.ca/howto/2012/11/19/using-slate/
 #
 # HYPER KEY
 # -------------------------------------------------------------------
-# The "hyper" key is a shortcut for CTRL + ALT + CMD
- 
-# Map hyper to caps lock w/ these instructions:
-# http://www.leancrew.com/all-this/2012/11/shift-control-option-command-on-caps-lock/
+# The "hyper" key is a shortcut for CTRL + ALT + CMD + SHIFT
 alias hyper ctrl;alt;cmd;shift#
-#alias hyper ctrl;alt;shift#
 #
 # GLOBAL CONFIGURATIONS
 # -------------------------------------------------------------------
@@ -65,36 +61,25 @@ bind 9:${hyper};shift ${toprightthird}
 
 #APPLICATIONS
 # -------------------------------------------------------------------
-alias editor 'MacVim'
-alias browser 'Google Chrome'
-alias terminal 'iTerm2'
-
 bind a:${hyper} focus 'Atom'
-bind c:${hyper} focus ${browser}
+bind c:${hyper} focus 'Google Chrome'
 bind e:${hyper} focus 'Evernote'
 bind f:${hyper} focus 'Finder'
-bind h:${hyper} focus 'Hackable Slack Client'
-bind i:${hyper} focus ${terminal}
+bind i:${hyper} focus 'iTerm2'
 bind l:${hyper} focus 'Slack'
 bind k:${hyper} focus 'Keynote'
 bind m:${hyper} focus 'Messages'
-bind v:${hyper} focus ${editor}
+bind v:${hyper} focus 'MacVim'
 bind z:${hyper} focus 'zoom.us'
 
 # Resize
-bind right:shift;${hyper}       resize +5% +0
-bind left:shift;${hyper}        resize -5% +0
-bind up:shift;${hyper}          resize +0   -5%
-bind down:shift;${hyper}        resize +0   +5%
+bind right:tab;${hyper}       resize +5% +0
+bind left:tab;${hyper}        resize -5% +0
+bind up:tab;${hyper}          resize +0   -5%
+bind down:tab;${hyper}        resize +0   +5%
 
 # Nudge
 bind right:${hyper} nudge +5% +0
 bind left:${hyper}  nudge -5% +0
 bind up:${hyper}    nudge +0   -5%
 bind down:${hyper}  nudge +0   +5%
-
-# Window Hints
-bind tab:${hyper} hint
-
-# Replace built in Mac switcher
-#bind tab:cmd switch
