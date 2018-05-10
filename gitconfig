@@ -18,7 +18,7 @@
   ss = status -s
   mergedry = merge --no-commit --no-ff
 [core]
-  excludesfile = /opt/boxen/config/git/gitignore
+	excludesfile = /Users/aaronbbrown/.gitignore
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
 	ui = always

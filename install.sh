@@ -38,7 +38,7 @@ fi
 echo "Building symlinks"
 
 # dotfiles
-for FILE in gitconfig bash_profile bashrc inputrc ; do 
+for FILE in gitconfig bash_profile bashrc inputrc gitignore; do
   FN="$HOME/.${FILE}" 
   archiveit "$FN"
   ln -vs "$DOTFILESROOT/$FILE" "$FN"
