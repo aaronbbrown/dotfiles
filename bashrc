@@ -35,6 +35,19 @@ function ksearch(){
     "$@"
 }
 
+
+# toggle background color
+tbg(){
+  profile=${profile:-Default}
+  if [ "$profile" == "Light" ]; then
+    profile=Default
+  else
+    profile=Light
+  fi
+  # "\\033]50;" is an iTerm magic escape sequence
+  echo -e "\\033]50;SetProfile=$profile\\a$profile"
+}
+
 # all vi, all the time
 set -o vi
 set completion-ignore-case On
