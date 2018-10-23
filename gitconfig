@@ -17,6 +17,12 @@
   lp = log --pretty=oneline --abbrev-commit
   ss = status -s
   mergedry = merge --no-commit --no-ff
+  branch-name = "rev-parse --abbrev-ref HEAD"
+  pb = "!git push origin -u $(git branch-name)"
+  cob = checkout -b
+  co = checkout
+  track = "!f() { (git checkout -b $1 origin/$1 --track) }; f"
+
 [core]
 	excludesfile = /Users/aaronbbrown/.gitignore
 	pager = diff-so-fancy | less --tabs=4 -RFX
@@ -54,3 +60,5 @@ protocol = https
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[fetch]
+	prune = true
