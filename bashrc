@@ -97,12 +97,14 @@ if [[ $PLATFORM = "Darwin" ]]; then
     alias tar="/usr/local/bin/gtar"
   fi
 
-  if [[ -z $SSH_TTY ]]; then
-    # not logged in via ssh
-    if [[ -f "$(which mvim)" ]]; then 
-      alias vim="mvim --remote-tab-silent"
-    fi
-  fi
+  alias mvim="mvim --remote-tab-silent"
+
+#  if [[ -z $SSH_TTY ]]; then
+#    # not logged in via ssh
+#    if [[ -f "$(which mvim)" ]]; then 
+#      alias vim="mvim --remote-tab-silent"
+#    fi
+#  fi
 
   # Apple can't decide on how to manage DNS
   OSX_MINOR_VERSION=$(sw_vers -productVersion | awk -F. '{print $2}')
@@ -167,3 +169,6 @@ PERL5LIB="/Users/aaronbbrown/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export P
 PERL_LOCAL_LIB_ROOT="/Users/aaronbbrown/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/Users/aaronbbrown/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/aaronbbrown/perl5"; export PERL_MM_OPT;
+
+# added by travis gem
+[ -f /Users/aaronbbrown/.travis/travis.sh ] && source /Users/aaronbbrown/.travis/travis.sh

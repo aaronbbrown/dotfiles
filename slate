@@ -69,6 +69,7 @@ bind i:${hyper} focus 'iTerm2'
 bind l:${hyper} focus 'Slack'
 bind k:${hyper} focus 'Keynote'
 bind m:${hyper} focus 'Messages'
+bind s:${hyper} focus 'Spotify'
 bind v:${hyper} focus 'MacVim'
 bind z:${hyper} focus 'zoom.us'
 
