@@ -36,6 +36,7 @@ brew 'go'
 brew 'grep'
 brew 'httpie'
 brew 'htop'
+brew 'hub', args: ["HEAD"]
 brew 'jq'
 brew 'moreutils'
 brew 'mtr'

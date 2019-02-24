@@ -109,14 +109,10 @@ if [[ $PLATFORM = "Darwin" ]]; then
   # Apple can't decide on how to manage DNS
   OSX_MINOR_VERSION=$(sw_vers -productVersion | awk -F. '{print $2}')
   OSX_PATCH_VERSION=$(sw_vers -productVersion | awk -F. '{print $3}')
-  if [[ $OSX_MINOR_VERSION -lt 10 ]]; then
+  if [[ $OSX_MINOR_VERSION -eq 10 ]] && [[ $OSX_PATCH_VERSION -lt 4 ]]; then
+    alias flushdns="sudo discoveryutil udnsflushcaches"
+  else
     alias flushdns="sudo killall -HUP mDNSResponder"
-  elif [[ $OSX_MINOR_VERSION -ge 10 ]]; then
-    if [[ $OSX_PATCH_VERSION -ge 4 ]]; then
-      alias flushdns="sudo killall -HUP mDNSResponder"
-    else
-      alias flushdns="sudo discoveryutil udnsflushcaches"
-    fi
   fi
 fi
 

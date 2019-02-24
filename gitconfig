@@ -22,6 +22,7 @@
   cob = checkout -b
   co = checkout
   track = "!f() { (git checkout -b $1 origin/$1 --track) }; f"
+  prs = "!hub pr list -f%U -h $(git branch-name); echo"
 
 [core]
 	excludesfile = /Users/aaronbbrown/.gitignore
