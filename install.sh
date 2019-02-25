@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ARCHIVEDIR="$HOME/archive"
-DOTFILESROOT="$HOME/dotfiles"
-PRIVROOT="$HOME/dotfiles-private"
+DOTFILESROOT="$HOME/.dotfiles"
+PRIVROOT="$HOME/.dotfiles-private"
 
 archiveit () {
   # if it's a symlink, just make it go away
@@ -22,9 +22,12 @@ archiveit () {
 
 brew tap Homebrew/bundle
 brew bundle
+sudo chown -R $(whoami) /usr/local/lib/pkgconfig
+brew bundle
 
 pushd $DOTFILESROOT
 git submodule update --init --recursive
+git submodule foreach pull origin master
 popd && pushd $HOME
 if [[ -d "$PRIVROOT" ]]; then
   pushd "$PRIVROOT"
@@ -32,7 +35,7 @@ if [[ -d "$PRIVROOT" ]]; then
   popd
 else
   echo "Cloning private files..."
-  git clone git@gitlab.9minutesnooze.com:aaron/dotfiles-private.git "$PRIVROOT"
+  git clone git@gitlab.9minutesnooze.com:aaronbbrown/dotfiles-private.git "$PRIVROOT"
 fi
 
 echo "Building symlinks"
@@ -69,9 +72,9 @@ archiveit "$HOME/.vim"
 ln -vs "$DOTFILESROOT/.vim" "$HOME/.vim"
 
 #private stuff
-archiveit "$HOME/.ssh"
-ln -vs "$PRIVROOT/.ssh" "$HOME/.ssh"
-chmod -Rv 600 "$HOME/.ssh"/*
+#archiveit "$HOME/.ssh"
+#cp -rv "$PRIVROOT/.ssh" "$HOME/.ssh"
+#chmod -Rv 600 "$HOME/.ssh"/*
 
 #KeyRemap4MacBook private.xml
 KR4MBDIR="$HOME/Library/Application Support/KeyRemap4MacBook"

@@ -118,7 +118,8 @@ fi
 
 #bash_completion
 case "$PLATFORM" in
-  Darwin) BC="$(brew --prefix)/share/bash-completion/bash_completion"
+  Darwin) BC="$(brew --prefix)/etc/profile.d/bash_completion.sh"
+          [[ -r "$(brew --prefix)/etc/bash_completion.d/git-prompt.sh" ]] && source "$(brew --prefix)/etc/bash_completion.d/git-prompt.sh"
           ;;
   Linux)  BC="/etc/bash_completion"
           ;;
