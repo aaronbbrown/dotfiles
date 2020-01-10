@@ -50,7 +50,6 @@ tbg(){
 
 # all vi, all the time
 set -o vi
-set completion-ignore-case On
 
 export VISUAL=/usr/local/bin/vim
 export EDITOR=/usr/local/bin/vim
@@ -101,7 +100,7 @@ if [[ $PLATFORM = "Darwin" ]]; then
 
 #  if [[ -z $SSH_TTY ]]; then
 #    # not logged in via ssh
-#    if [[ -f "$(which mvim)" ]]; then 
+#    if [[ -f "$(which mvim)" ]]; then
 #      alias vim="mvim --remote-tab-silent"
 #    fi
 #  fi
@@ -120,6 +119,7 @@ fi
 case "$PLATFORM" in
   Darwin) BC="$(brew --prefix)/etc/profile.d/bash_completion.sh"
           [[ -r "$(brew --prefix)/etc/bash_completion.d/git-prompt.sh" ]] && source "$(brew --prefix)/etc/bash_completion.d/git-prompt.sh"
+          export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d"
           ;;
   Linux)  BC="/etc/bash_completion"
           ;;
@@ -145,7 +145,7 @@ if [[ -x "$(which pyenv)" ]]; then
   eval "$(pyenv init -)"
 fi
 
-if [[ -f "$HOME/.gvm/scripts/gvm" ]]; then 
+if [[ -f "$HOME/.gvm/scripts/gvm" ]]; then
   source "$HOME/.gvm/scripts/gvm"
 fi
 
@@ -153,7 +153,7 @@ fi
 export MYSQL_PS1="$(hostname) (\h://\d:\p)> "
 
 if [[ -d "$HOME/dotfiles-private/rc.d" ]]; then
-  for RC in $HOME/dotfiles-private/rc.d/*; do 
+  for RC in $HOME/dotfiles-private/rc.d/*; do
     . $RC
   done
 fi
