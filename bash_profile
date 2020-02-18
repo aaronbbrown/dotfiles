@@ -7,3 +7,5 @@ fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 [[ -x $(readlink -f $(brew --prefix)/bin/rbenv) ]] && eval "$(rbenv init -)"
+
+complete -C /Users/aaronbbrown/bin/hubbers hubbers

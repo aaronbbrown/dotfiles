@@ -23,6 +23,8 @@
   co = checkout
   track = "!f() { (git checkout -b $1 origin/$1 --track) }; f"
   prs = "!hub pr list -f%U -h $(git branch-name); echo"
+  taggrep = "!f() { (git log --all --pretty=%H --grep \"$1\" | xargs -I%  git tag --contains % | sort | uniq) }; f"
+  prunelocal = "!f() (git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d); f"
 
 [core]
 	excludesfile = /Users/aaronbbrown/.gitignore
@@ -63,3 +65,5 @@ protocol = https
 	clean = git-lfs clean -- %f
 [fetch]
 	prune = true
+[commit]
+	gpgsign = true
