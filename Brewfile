@@ -28,6 +28,7 @@ cask 'zoomus'
 cask '1password6'
 cask 'font-fira-code'
 cask 'gpg-suite'
+cask 'visual-studio-code'
 
 brew 'ag'
 brew 'bat'
